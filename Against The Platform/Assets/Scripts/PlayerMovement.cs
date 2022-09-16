@@ -9,8 +9,11 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float movementSpeed = 6f;
     [SerializeField] float jumpForce = 5f;
+
     [SerializeField] LayerMask ground;
     [SerializeField] Transform groundCheck;
+
+    [SerializeField] AudioSource jumpSound;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
+            jumpSound.Play();
         }
                 
     }
